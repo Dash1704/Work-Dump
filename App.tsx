@@ -2,8 +2,14 @@ import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View, TextInput, Button } from 'react-native';
 import { useState } from 'react';
 
-export default function App() {
-  const [salary, setCount] = useState('')
+export function App() {
+  const [salary, setSalary] = useState<any | undefined>(0)
+  const [time, setTime] = useState<any | undefined>(0)
+
+  console.log(salary)
+  console.log(time)
+
+  const calculator = ((salary / 525600) * time)
 
   return (
     <View style={styles.container}>
@@ -12,12 +18,12 @@ export default function App() {
 
       <View style={styles.moneyContainer}>
         <Text style={styles.info}>Yearly salary: £</Text>
-        <TextInput style={styles.salaryBox} onChangeText={text => console.warn('oioi')}>{salary}</TextInput>
+        <TextInput style={styles.salaryBox} onChangeText={setSalary}>{salary}</TextInput>
       </View>
 
       <View style={styles.moneyContainer}>
-        <Text style={styles.info}>Time spent on Bog (mins.secs): </Text>
-        <TextInput style={styles.salaryBox}>{salary}</TextInput>
+        <Text style={styles.info}>Time on bog (mins): </Text>
+        <TextInput style={styles.salaryBox} onChangeText={setTime}>{time}</TextInput>
       </View>
 
       <View style={styles.button}>
@@ -31,9 +37,6 @@ export default function App() {
         <Button title='start timer'></Button>
         <Button title='stop timer'></Button>
       </View> */}
-      
-
-    
     </View>
   );
 }
@@ -68,3 +71,4 @@ const styles = StyleSheet.create({
     marginTop: 10
   }
 });
+
