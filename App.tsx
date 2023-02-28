@@ -44,8 +44,7 @@ function App() {
       </View>
 
       <View style={styles.button}>
-        <Button title='Reset Fields' 
-          onPress={() => reset()}></Button>
+        <Button title='Reset Fields' onPress={() => reset()}></Button>
       </View>
 
       {/* <View style={styles.button}>
