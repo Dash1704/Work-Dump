@@ -88,3 +88,8 @@ const styles = StyleSheet.create({
   }
 });
 
+//TODO
+//Fix the money output so it is always 2 digits after the .
+//Start stop timer
+//Drop down
+//refactor to differenct components
