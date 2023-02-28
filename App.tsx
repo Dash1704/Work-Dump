@@ -5,11 +5,18 @@ function App() {
   const [salary, setSalary] = useState<number | string>("")
   const [weekHours, setWeekHours] = useState<number | string>("")
   const [time, setTime] = useState<number | string>("")
-  const [showValue, setShowValue] = useState<boolean>(false)
+  const [showEarnings, setShowEarnings] = useState<boolean>(false)
 
   const calculator = (+salary / (+weekHours * 52) / 60 * +time)
   const convert = calculator.toString()
   const earnings = convert.substring(0, 4)
+
+  const reset = () => {
+    setSalary('')
+    setWeekHours('')
+    setTime('')
+    setShowEarnings(false)
+  }
 
   return (
     <View style={styles.container}>
@@ -32,14 +39,15 @@ function App() {
       </View>
 
       <View style={styles.button}>
-        <Button title='Click to see earnings' onPress={() => setShowValue(true)}></Button>
-        {showValue ? <Text style={styles.info}>£{earnings}</Text> : null}
+        <Button title='Click to see earnings' onPress={() => setShowEarnings(true)}></Button>
+        {showEarnings ? <Text style={styles.info}>£{earnings}</Text> : null}
       </View>
 
       <View style={styles.button}>
-        <Button title='Reset Fields' onPress={() => setShowValue(true)}></Button>
+        <Button title='Reset Fields' 
+          onPress={() => reset()}></Button>
       </View>
-      
+
       {/* <View style={styles.button}>
         <Button title='start timer'></Button>
         <Button title='stop timer'></Button>
