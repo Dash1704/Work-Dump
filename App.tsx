@@ -2,14 +2,26 @@ import React, { useState } from 'react';
 import { StyleSheet, Text, View, TextInput, Button } from 'react-native';
 
 function App() {
-  const [salary, setSalary] = useState<number | string>("")
-  const [weekHours, setWeekHours] = useState<number | string>("")
-  const [time, setTime] = useState<number | string>("")
+  const [salary, setSalary] = useState<number | string>('')
+  const [weekHours, setWeekHours] = useState<number | string>('')
+  const [time, setTime] = useState<number | string>('')
   const [showEarnings, setShowEarnings] = useState<boolean>(false)
 
-  const calculator = (+salary / (+weekHours * 52) / 60 * +time)
-  const convert = calculator.toString()
-  const earnings = convert.substring(0, 4)
+  const calculator: number = (+salary / (+weekHours * 52) / 60 * +time)
+  const convert: string = calculator.toString()
+
+  let splitUp: string[] = convert.split('.')
+
+  const twoPennies = (array: string[]) => {
+    if (array[1] == undefined){
+      return;
+    } else {
+    let pennies: string[] = array[1].split('')
+    return `${array[0]}.${pennies[0]}` + `${pennies[1]}`
+    }
+  }
+
+  const earnings: string | undefined = twoPennies(splitUp)
 
   const reset = () => {
     setSalary('')
