@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { StyleSheet, Text, View, TextInput, Button } from 'react-native';
 import { InputBox } from './components/InputBox'
 import { Title } from './components/Title'
+import { BogButton } from './components/BogButton';
 
 function App() {
   const [salary, setSalary] = useState<number | string>('')
@@ -49,21 +50,13 @@ function App() {
         <InputBox boxTitle='Time on Bog (MM.SS)' onChangeText={setTime} placeholder='E.g 5.03'>{time}</InputBox>
       </View>
 
-
-
-      {/* <View style={styles.moneyContainer}>
-        <Text style={styles.info}>Time on bog (mins): </Text>
-        <TextInput style={styles.salaryBox} onChangeText={setTime}>{time}</TextInput>
-      </View> */}
+      <BogButton title='Calculate Earnings' onPress={() => setShowEarnings(true)}/>
 
       <View style={styles.button}>
-        <Button title='Click to see earnings' onPress={() => setShowEarnings(true)}></Button>
         {showEarnings ? <Text>£{earnings}</Text> : null}
       </View>
 
-      <View style={styles.button}>
-        <Button title='Reset Fields' onPress={() => reset()}></Button>
-      </View>
+      <BogButton title='Reset Calculation' onPress={() => reset()}/>
     </View>
   );
 }
@@ -87,7 +80,6 @@ const styles = StyleSheet.create({
   moneyContainer: {
     flexDirection: 'row',
     marginTop: 17,
-    // textAlign: 'center'
   },
   button: {
     marginTop: 10
