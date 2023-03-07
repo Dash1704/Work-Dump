@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { StyleSheet, Text, View, TextInput, Button } from 'react-native';
+import { InputBox } from './components/InputBox'
 
 function App() {
   const [salary, setSalary] = useState<number | string>('')
@@ -35,20 +36,30 @@ function App() {
       <Text style={styles.header}>Welcome to Work Dump!</Text>
       <Text style={styles.info}>Enter your yearly salary and time yourself to find out how much you've made on the bog at work!</Text>
 
-      <View style={styles.moneyContainer}>
+      {/* <View style={styles.moneyContainer}>
         <Text style={styles.info}>Yearly salary: £</Text>
         <TextInput style={styles.salaryBox} onChangeText={setSalary}>{salary}</TextInput>
-      </View>
+      </View>  */}
 
-      <View style={styles.moneyContainer}>
-        <Text style={styles.info}>Hours per week: </Text>
-        <TextInput style={styles.salaryBox} onChangeText={setWeekHours}>{weekHours}</TextInput>
-      </View>
 
-      <View style={styles.moneyContainer}>
+    <View style={{marginTop: 39}}>
+      <InputBox boxTitle='Yearly Salary' onChangeText={setSalary}>{salary}</InputBox>
+    </View>
+
+    <View style={{marginTop: 18}}>
+      <InputBox boxTitle='Hours per week' onChangeText={setWeekHours}>{weekHours}</InputBox>
+    </View>
+    
+    <View style={{marginTop: 18}}>
+      <InputBox boxTitle='Time on Bog' onChangeText={setTime}>{time}</InputBox>
+    </View>
+
+
+
+      {/* <View style={styles.moneyContainer}>
         <Text style={styles.info}>Time on bog (mins): </Text>
         <TextInput style={styles.salaryBox} onChangeText={setTime}>{time}</TextInput>
-      </View>
+      </View> */}
 
       <View style={styles.button}>
         <Button title='Click to see earnings' onPress={() => setShowEarnings(true)}></Button>
