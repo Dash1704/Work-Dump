@@ -20,7 +20,7 @@ function App() {
       return;
     } else {
     let pennies: string[] = array[1].split('')
-    return `${array[0]}.${pennies[0]}` + `${pennies[1]}`
+    return `£${array[0]}.${pennies[0]}` + `${pennies[1]}`
     }
   }
 
@@ -32,6 +32,10 @@ function App() {
     setTime('')
     setShowEarnings(false)
   }
+
+  console.log(salary)
+  console.log(weekHours)
+  console.log(time)
 
   return (
     <View style={styles.container}>
@@ -53,7 +57,7 @@ function App() {
       <BogButton title='Calculate Earnings' onPress={() => setShowEarnings(true)}/>
 
       <View style={styles.button}>
-        {showEarnings ? <Text>£{earnings}</Text> : null}
+        {showEarnings ? <Text>{earnings}</Text> : null}
       </View>
 
       <BogButton title='Reset Calculation' onPress={() => reset()}/>
@@ -87,7 +91,6 @@ const styles = StyleSheet.create({
 });
 
 //TODO
-//Fix the money output so it is always 2 digits after the .
 //Start stop timer
 //Drop down
 //refactor to differenct components

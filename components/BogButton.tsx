@@ -24,6 +24,7 @@ const styles = StyleSheet.create({
   text: {
     color: 'white',
     fontWeight: '600',
-    fontSize: 16
+    fontSize: 16,
+    letterSpacing: -0.05
   }
 })

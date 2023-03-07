@@ -2,10 +2,19 @@ import React, { useState } from 'react';
 import { StyleSheet, Text, View, TextInput, Button } from 'react-native';
 
 export function InputBox(props: any){
+  const [focus, setFocus] = useState<boolean>(false)
+  const customStyle = focus ? styles.focusBoxContainer : styles.boxContainer
+
   return (
     <View style={styles.container}>
       <Text style={styles.titleText}>{props.boxTitle}</Text>
-      <TextInput style={styles.boxContainer} onChangeText={props.onChangeText} placeholder={props.placeholder}></TextInput>
+      <TextInput 
+        style={customStyle} 
+        onChangeText={props.onChangeText} 
+        placeholder={props.placeholder}
+        onFocus={() => setFocus(true)}
+        onBlur={() => setFocus(false)}>
+      </TextInput>
     </View>
   )
 }
@@ -29,5 +38,13 @@ const styles = StyleSheet.create({
     padding: 10,
     borderRadius: 5,
     borderColor: '#a9a9a9'
+  },
+  focusBoxContainer: {
+    marginTop: 4,
+    height: 54,
+    borderWidth: 1,
+    padding: 10,
+    borderRadius: 5,
+    borderColor: '#714025'
   }
 })
