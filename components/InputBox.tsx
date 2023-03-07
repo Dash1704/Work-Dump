@@ -5,7 +5,7 @@ export function InputBox(props: any){
   return (
     <View style={styles.container}>
       <Text style={styles.titleText}>{props.boxTitle}</Text>
-      <TextInput style={styles.boxContainer} onChangeText={props.onChangeText}></TextInput>
+      <TextInput style={styles.boxContainer} onChangeText={props.onChangeText} placeholder={props.placeholder}></TextInput>
     </View>
   )
 }
@@ -21,7 +21,6 @@ const styles = StyleSheet.create({
     color: "#000000",
     lineHeight: 21,
     // fontFamily: 'Inter'
-    // justifyContent: 'flex-start'
   },
   boxContainer: {
     marginTop: 4,

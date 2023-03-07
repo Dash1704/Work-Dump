@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { StyleSheet, Text, View, TextInput, Button } from 'react-native';
 import { InputBox } from './components/InputBox'
+import { Title } from './components/Title'
 
 function App() {
   const [salary, setSalary] = useState<number | string>('')
@@ -33,26 +34,20 @@ function App() {
 
   return (
     <View style={styles.container}>
-      <Text style={styles.header}>Welcome to Work Dump!</Text>
-      <Text style={styles.info}>Enter your yearly salary and time yourself to find out how much you've made on the bog at work!</Text>
 
-      {/* <View style={styles.moneyContainer}>
-        <Text style={styles.info}>Yearly salary: £</Text>
-        <TextInput style={styles.salaryBox} onChangeText={setSalary}>{salary}</TextInput>
-      </View>  */}
+      < Title />
 
+      <View style={{marginTop: 39}}>
+        <InputBox boxTitle='Yearly Salary' onChangeText={setSalary} placeholder='E.g £30,000'>{salary}</InputBox>
+      </View>
 
-    <View style={{marginTop: 39}}>
-      <InputBox boxTitle='Yearly Salary' onChangeText={setSalary}>{salary}</InputBox>
-    </View>
-
-    <View style={{marginTop: 18}}>
-      <InputBox boxTitle='Hours per week' onChangeText={setWeekHours}>{weekHours}</InputBox>
-    </View>
-    
-    <View style={{marginTop: 18}}>
-      <InputBox boxTitle='Time on Bog' onChangeText={setTime}>{time}</InputBox>
-    </View>
+      <View style={{marginTop: 18}}>
+        <InputBox boxTitle='Hours per week' onChangeText={setWeekHours} placeholder='E.g 35'>{weekHours}</InputBox>
+      </View>
+      
+      <View style={{marginTop: 18}}>
+        <InputBox boxTitle='Time on Bog (MM.SS)' onChangeText={setTime} placeholder='E.g 5.03'>{time}</InputBox>
+      </View>
 
 
 
@@ -63,7 +58,7 @@ function App() {
 
       <View style={styles.button}>
         <Button title='Click to see earnings' onPress={() => setShowEarnings(true)}></Button>
-        {showEarnings ? <Text style={styles.info}>£{earnings}</Text> : null}
+        {showEarnings ? <Text>£{earnings}</Text> : null}
       </View>
 
       <View style={styles.button}>
@@ -81,13 +76,6 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff',
     alignItems: 'center',
     justifyContent: 'center',
-  },
-  header: {
-    fontSize: 30,
-    marginTop: 10
-  },
-  info: {
-    fontSize: 17
   },
   salaryBox: {
     height: 40,
