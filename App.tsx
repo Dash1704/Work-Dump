@@ -1,14 +1,16 @@
 import React, { useState } from 'react';
-import { StyleSheet, Text, View, TextInput, Button } from 'react-native';
+import { StyleSheet, Text, View, TextInput, Button, Modal } from 'react-native';
 import { InputBox } from './components/InputBox'
 import { Title } from './components/Title'
 import { BogButton } from './components/BogButton';
+import { ResultModal } from './components/ResultModal';
 
 function App() {
   const [salary, setSalary] = useState<number | string>('')
   const [weekHours, setWeekHours] = useState<number | string>('')
   const [time, setTime] = useState<number | string>('')
   const [showEarnings, setShowEarnings] = useState<boolean>(false)
+  const [visible, setVisible] = useState<boolean>(false)
 
   const calculator: number = (+salary / (+weekHours * 52) / 60 * +time)
   const convert: string = calculator.toString()
@@ -36,6 +38,7 @@ function App() {
   console.log(salary)
   console.log(weekHours)
   console.log(time)
+  console.log(earnings)
 
   return (
     <View style={styles.container}>
@@ -43,7 +46,7 @@ function App() {
       < Title />
 
       <View style={{marginTop: 39}}>
-        <InputBox boxTitle='Yearly Salary' onChangeText={setSalary} placeholder='E.g £30,000'>{salary}</InputBox>
+        <InputBox boxTitle='Yearly Salary (£)' onChangeText={setSalary} placeholder='E.g £30,000'>{salary}</InputBox>
       </View>
 
       <View style={{marginTop: 18}}>
@@ -54,13 +57,27 @@ function App() {
         <InputBox boxTitle='Time on Bog (MM.SS)' onChangeText={setTime} placeholder='E.g 5.03'>{time}</InputBox>
       </View>
 
-      <BogButton title='Calculate Earnings' onPress={() => setShowEarnings(true)}/>
+      <BogButton title='Calculate Earnings' onPress={
+        // () => setShowEarnings(true)
+        () => setVisible(true)
+      }/>
 
-      <View style={styles.button}>
-        {showEarnings ? <Text>{earnings}</Text> : null}
-      </View>
-
-      <BogButton title='Reset Calculation' onPress={() => reset()}/>
+      <ResultModal
+        visible={visible}
+      >
+        <View style={{alignItems: 'center'}}>
+          <View style={styles.modalHeader}>
+           
+              <Text style={styles.headerText}>Your Earnings</Text>
+          
+              <Text>X</Text>
+            
+          </View>
+        </View>
+        <Text>{earnings}</Text>
+        <Text style={styles.modalResult}>per poo</Text>
+      </ResultModal>
+      
     </View>
   );
 }
@@ -87,10 +104,25 @@ const styles = StyleSheet.create({
   },
   button: {
     marginTop: 10
+  },
+  modalHeader: {
+    // alignItems: 'flex-start',
+    marginTop: 38,
+    flexDirection: 'row'  
+  },
+  headerText: {
+    fontSize: 26,
+    fontWeight: "700"
+  },
+  modalResult: {
+    marginVertical: 30, 
+    fontSize: 20,
+    textAlign: 'center'
   }
 });
 
 //TODO
 //Start stop timer
 //Drop down
-//refactor to differenct components
+//Import Inter font
+//modal
