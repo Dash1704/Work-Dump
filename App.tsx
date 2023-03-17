@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { StyleSheet, Text, View, TextInput, Button, Modal } from 'react-native';
+import { StyleSheet, Text, View, TextInput, Button, Modal, TouchableOpacity } from 'react-native';
 import { InputBox } from './components/InputBox'
 import { Title } from './components/Title'
 import { BogButton } from './components/BogButton';
@@ -66,19 +66,26 @@ function App() {
       <ResultModal
         visible={visible}
       >
-        <View style={{alignItems: 'center'}}>
+        <View>
           <View style={styles.modalHeader}>
-           
-              <Text style={styles.headerText}>Your Earnings</Text>
-          
-              <Text>X</Text>
+            <Text style={styles.headerText}>Your Earnings</Text>
+            <TouchableOpacity
+            onPress={() => {
+              setVisible(false)
+            }}>
+            <Text style={styles.headerText}>X</Text>
+            </TouchableOpacity>
             
           </View>
         </View>
-        <Text>{earnings}</Text>
-        <Text style={styles.modalResult}>per poo</Text>
 
+        <View style={styles.innerModal}>
+          <Text>{earnings}</Text>
+          <Text style={styles.modalResult}>per poo</Text>
+        </View>
+        
         <BogButton 
+        style={{alignItems: 'center'}}
           title='Reset Calculation' 
           onPress={() => {
             setVisible(false)
@@ -115,14 +122,28 @@ const styles = StyleSheet.create({
     marginTop: 10
   },
   modalHeader: {
-    // alignItems: 'flex-start',
+    alignItems: 'flex-start',
     marginTop: 38,
-    flexDirection: 'row'  
+    flexDirection: 'row', 
+    justifyContent: 'space-between',
+    paddingHorizontal: 25  
   },
   headerText: {
     fontSize: 26,
     fontWeight: "700",
     // fontFamily: "Inter"
+  },
+  innerModal: {
+    width: 354,
+    height: 321,
+    // borderColor: 'black',
+    backgroundColor: 'black',
+    borderRadius: 20,
+    marginTop: 37,
+    padding: 30
+    // alignContent: 'center',
+    // alignItems: 'center',
+    // justifyContent: 'center'
   },
   modalResult: {
     marginVertical: 30, 
@@ -136,3 +157,4 @@ const styles = StyleSheet.create({
 //Drop down
 //Import Inter font
 //modal
+//linear gradients

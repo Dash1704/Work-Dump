@@ -27,13 +27,11 @@ export function ResultModal({visible, children}: {
   
       <Modal
         transparent
-        visible={showModal}
+        visible={true}
       >
         <View style={styles.modalBackGround}>
           <View style={styles.modalContainer}>
-            {/* <View style={styles.modalInnerBox}> */}
-              {children}
-            {/* </View> */}
+            {children}
           </View>
         </View>
       </Modal>
@@ -46,7 +44,7 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: 'rgba(0,0,0,0.5)',
     justifyContent: 'flex-end',
-    alignItems: 'center'
+    // alignItems: 'center'
 
   },
   modalContainer: {
@@ -62,7 +60,5 @@ const styles = StyleSheet.create({
     // alignItems: 'center'
   },
   modalInnerBox: {
-
-
-  },
+  }
 })
