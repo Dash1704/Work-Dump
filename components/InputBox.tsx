@@ -21,7 +21,8 @@ export function InputBox(props: any){
 
 const styles = StyleSheet.create({
   container: {
-    width: 313
+    width: 313,
+    marginTop: 17
   },
   titleText: {
     fontSize: 14,

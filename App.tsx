@@ -4,6 +4,7 @@ import { InputBox } from './components/InputBox'
 import { Title } from './components/Title'
 import { BogButton } from './components/BogButton';
 import { ResultModal } from './components/ResultModal';
+import { Logo } from './components/Logo';
 
 function App() {
   const [salary, setSalary] = useState<number | string>('')
@@ -42,23 +43,23 @@ function App() {
 
   return (
     <View style={styles.container}>
-
+      
+      < Logo /> 
       < Title />
 
-      <View style={{marginTop: 39}}>
+      <View>
         <InputBox boxTitle='Yearly Salary (£)' onChangeText={setSalary} placeholder='E.g £30,000'>{salary}</InputBox>
       </View>
 
-      <View style={{marginTop: 18}}>
+      <View>
         <InputBox boxTitle='Hours per week' onChangeText={setWeekHours} placeholder='E.g 35'>{weekHours}</InputBox>
       </View>
       
-      <View style={{marginTop: 18}}>
+      <View>
         <InputBox boxTitle='Time on Bog (MM.SS)' onChangeText={setTime} placeholder='E.g 5.03'>{time}</InputBox>
       </View>
 
       <BogButton title='Calculate Earnings' onPress={
-        // () => setShowEarnings(true)
         () => setVisible(true)
       }/>
 
@@ -76,6 +77,14 @@ function App() {
         </View>
         <Text>{earnings}</Text>
         <Text style={styles.modalResult}>per poo</Text>
+
+        <BogButton 
+          title='Reset Calculation' 
+          onPress={() => {
+            setVisible(false)
+            // reset()
+          }}
+        />
       </ResultModal>
       
     </View>
@@ -112,7 +121,8 @@ const styles = StyleSheet.create({
   },
   headerText: {
     fontSize: 26,
-    fontWeight: "700"
+    fontWeight: "700",
+    // fontFamily: "Inter"
   },
   modalResult: {
     marginVertical: 30, 
