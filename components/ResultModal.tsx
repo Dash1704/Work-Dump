@@ -27,7 +27,7 @@ export function ResultModal({visible, children}: {
   
       <Modal
         transparent
-        visible={true}
+        visible={showModal}
       >
         <View style={styles.modalBackGround}>
           <View style={styles.modalContainer}>
