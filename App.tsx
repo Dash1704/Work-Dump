@@ -82,18 +82,19 @@ function App() {
         </View>
 
         <View style={styles.innerModal}>
-          <Text>{earnings}</Text>
+          <Text style={styles.earnings}>{earnings}</Text>
           <Text style={styles.modalResult}>per poo</Text>
         </View>
         
-        <BogButton 
-        style={{alignItems: 'center'}}
-          title='Reset Calculation' 
-          onPress={() => {
-            setVisible(false)
-            // reset()
+        <View style={{alignItems: 'center'}}>
+          <BogButton 
+            style={{alignItems: 'center'}}
+            title='Reset Calculation' 
+            onPress={() => {
+              setVisible(false)
           }}
-        />
+        /></View>
+        
       </ResultModal>
       
     </SafeAreaView>
@@ -145,17 +146,28 @@ const styles = StyleSheet.create({
     width: 354,
     height: 321,
     // borderColor: 'black',
-    backgroundColor: 'black',
+    // backgroundColor: 'rgba(0,0,0,0.5)',
+    // borderWidth: 1,
+    // borderColor: 'grey',
+    elevation: 50,
+    // shadowRadius: 80,
     borderRadius: 20,
     marginTop: 37,
-    padding: 30
-    // alignContent: 'center',
-    // alignItems: 'center',
-    // justifyContent: 'center'
+    padding: 30,
+    alignContent: 'center',
+    alignItems: 'center',
+    justifyContent: 'center',
+    
   },
   modalResult: {
     marginVertical: 30, 
     fontSize: 20,
+    textAlign: 'center'
+  },
+  earnings: {
+    fontWeight: "700",
+    fontSize: 60,
+    color: '#61301A',
     textAlign: 'center'
   }
 });
