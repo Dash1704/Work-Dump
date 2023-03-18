@@ -20,7 +20,7 @@ const styles = StyleSheet.create({
     height: 165,
     borderRadius: 165 / 2,
     backgroundColor: '#D9D9D9',
-    marginTop: 30
+    marginTop: 30,
   },
   poop: {
     width: 300, 

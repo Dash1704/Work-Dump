@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { StyleSheet, Text, View, TextInput, Button, Modal, TouchableOpacity } from 'react-native';
+import { StyleSheet, Text, SafeAreaView, View, TextInput, Button, Modal, TouchableOpacity } from 'react-native';
 import { InputBox } from './components/InputBox'
 import { Title } from './components/Title'
 import { BogButton } from './components/BogButton';
@@ -12,6 +12,7 @@ function App() {
   const [time, setTime] = useState<number | string>('')
   const [showEarnings, setShowEarnings] = useState<boolean>(false)
   const [visible, setVisible] = useState<boolean>(false)
+  const customStyle = visible ? styles.modalUpBackGround : styles.modalDownBackGround
 
   const calculator: number = (+salary / (+weekHours * 52) / 60 * +time)
   const convert: string = calculator.toString()
@@ -42,7 +43,8 @@ function App() {
   console.log(earnings)
 
   return (
-    <View style={styles.container}>
+    <SafeAreaView style={customStyle}>
+    {/* <View style={styles.container}> */}
       
       < Logo /> 
       < Title />
@@ -94,14 +96,20 @@ function App() {
         />
       </ResultModal>
       
-    </View>
+    </SafeAreaView>
   );
 }
 
 export default App
 
 const styles = StyleSheet.create({
-  container: {
+  modalUpBackGround: {
+    flex: 1,
+    backgroundColor: 'rgba(0,0,0,0.5)',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  modalDownBackGround: {
     flex: 1,
     backgroundColor: '#fff',
     alignItems: 'center',

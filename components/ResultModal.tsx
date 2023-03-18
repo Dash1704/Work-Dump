@@ -1,9 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { StyleSheet, Text, View, Modal, Dimensions } from 'react-native';
 
-const WIDTH = Dimensions.get('window').width
-const HEIGHT_MODAL = Dimensions.get('window').width 
-
 export function ResultModal({visible, children}: {
   visible: boolean,
   children: any
@@ -28,8 +25,9 @@ export function ResultModal({visible, children}: {
       <Modal
         transparent
         visible={showModal}
+        animationType='slide'
       >
-        <View style={styles.modalBackGround}>
+        <View style={styles.modalUpBackGround}>
           <View style={styles.modalContainer}>
             {children}
           </View>
@@ -40,13 +38,21 @@ export function ResultModal({visible, children}: {
 } 
 
 const styles = StyleSheet.create({
-  modalBackGround: {
+  modalUpBackGround: {
     flex: 1,
-    backgroundColor: 'rgba(0,0,0,0.5)',
+    // backgroundColor: 'rgba(0,0,0,0.5)',
     justifyContent: 'flex-end',
     // alignItems: 'center'
 
   },
+  modalDownBackGround: {
+    flex: 1,
+    backgroundColor: 'white',
+    // backgroundColor: 'black',
+    justifyContent: 'flex-end',
+
+  },
+
   modalContainer: {
     width: '100%',
     backgroundColor: 'white',
