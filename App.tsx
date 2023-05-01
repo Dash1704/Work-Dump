@@ -5,42 +5,17 @@ import { Title } from './components/Title'
 import { BogButton } from './components/BogButton';
 import { ResultModal } from './components/ResultModal';
 import { Logo } from './components/Logo';
+import { Calculator } from './components/Calculator';
 
 function App() {
+  const [result, setResult] = useState<string | undefined>('')
+
   const [salary, setSalary] = useState<number | string>('')
   const [weekHours, setWeekHours] = useState<number | string>('')
   const [time, setTime] = useState<number | string>('')
-  const [showEarnings, setShowEarnings] = useState<boolean>(false)
+  
   const [visible, setVisible] = useState<boolean>(false)
   const customStyle = visible ? styles.modalUpBackGround : styles.modalDownBackGround
-
-  const calculator: number = (+salary / (+weekHours * 52) / 60 * +time)
-  const convert: string = calculator.toString()
-
-  let splitUp: string[] = convert.split('.')
-
-  const twoPennies = (array: string[]) => {
-    if (array[1] == undefined){
-      return;
-    } else {
-    let pennies: string[] = array[1].split('')
-    return `£${array[0]}.${pennies[0]}` + `${pennies[1]}`
-    }
-  }
-
-  const earnings: string | undefined = twoPennies(splitUp)
-
-  const reset = () => {
-    setSalary('')
-    setWeekHours('')
-    setTime('')
-    setShowEarnings(false)
-  }
-
-  console.log(salary)
-  console.log(weekHours)
-  console.log(time)
-  console.log(earnings)
 
   return (
     <SafeAreaView style={customStyle}>
@@ -62,8 +37,11 @@ function App() {
       </View>
 
       <BogButton title='Calculate Earnings' onPress={
-        () => setVisible(true)
-      }/>
+        () => {
+          setResult(Calculator(salary, weekHours, time))
+          setVisible(true)
+        }}
+      />
 
       <ResultModal
         visible={visible}
@@ -82,7 +60,7 @@ function App() {
         </View>
 
         <View style={styles.innerModal}>
-          <Text style={styles.earnings}>{earnings}</Text>
+          <Text style={styles.earnings}>{result}</Text>
           <Text style={styles.modalResult}>per poo</Text>
         </View>
         
@@ -173,8 +151,8 @@ const styles = StyleSheet.create({
 });
 
 //TODO
-//Start stop timer
-//Drop down
+//Refactor
 //Import Inter font
 //modal
 //linear gradients
+

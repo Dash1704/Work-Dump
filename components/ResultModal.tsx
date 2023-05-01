@@ -3,7 +3,8 @@ import { StyleSheet, Text, View, Modal, Dimensions } from 'react-native';
 
 export function ResultModal({visible, children}: {
   visible: boolean,
-  children: any
+  children: any,
+  
 }){
   const [showModal, setShowModal] = useState<boolean>(visible)
 
@@ -68,3 +69,5 @@ const styles = StyleSheet.create({
   modalInnerBox: {
   }
 })
+
+//
