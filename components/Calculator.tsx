@@ -1,9 +1,9 @@
 export function Calculator(
-  a: string | number, 
-  b: string | number, 
-  c: string | number) : any 
+  salary: string | number, 
+  weekHours: string | number, 
+  time: string | number) : any 
   {
-    const calculation: number = (+a / (+b * 52) / 60 * +c)
+    const calculation: number = (+salary / (+weekHours * 52) / 60 * +time)
     const convert: string = calculation.toString()
 
     let splitUp: string[] = convert.split('.')

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { StyleSheet, Text, SafeAreaView, View, TextInput, Button, Modal, TouchableOpacity } from 'react-native';
 import { InputBox } from './components/InputBox'
 import { Title } from './components/Title'
@@ -8,14 +8,24 @@ import { Logo } from './components/Logo';
 import { Calculator } from './components/Calculator';
 
 function App() {
-  const [result, setResult] = useState<string | undefined>('')
-
   const [salary, setSalary] = useState<number | string>('')
   const [weekHours, setWeekHours] = useState<number | string>('')
   const [time, setTime] = useState<number | string>('')
+  const [result, setResult] = useState<string | undefined>('')
+
+  console.log(salary)
+  console.log(weekHours)
+  console.log(time)
+  console.log(result)
   
   const [visible, setVisible] = useState<boolean>(false)
   const customStyle = visible ? styles.modalUpBackGround : styles.modalDownBackGround
+
+  function Reset(): any {
+    setSalary('')
+    setWeekHours('')
+    setTime('')
+  }
 
   return (
     <SafeAreaView style={customStyle}>
@@ -70,6 +80,7 @@ function App() {
             title='Reset Calculation' 
             onPress={() => {
               setVisible(false)
+              Reset()
           }}
         /></View>
         
