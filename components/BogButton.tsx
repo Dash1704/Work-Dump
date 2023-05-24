@@ -1,12 +1,19 @@
 import React, { useState } from 'react';
-import { StyleSheet, Text, View, TextInput, TouchableOpacity } from 'react-native';
+import { StyleSheet, Text, View, TouchableOpacity } from 'react-native';
+import { LinearGradient } from 'expo-linear-gradient'
 
 export function BogButton(props: any){
   return (
     <View>
-      <TouchableOpacity onPress={props.onPress} style={styles.bogButton}>
-        <Text style={styles.text}>{props.title}</Text>
-      </TouchableOpacity>
+      <LinearGradient
+        start={{x: 0, y: 0}}
+        end={{x:1, y: 1}}
+        colors={['#B78453', '#61301A']}
+        style={styles.bogButton}>
+        <TouchableOpacity onPress={props.onPress} >
+          <Text style={styles.text}>{props.title}</Text>
+        </TouchableOpacity>
+      </LinearGradient>
     </View>
   )
 }
@@ -19,7 +26,6 @@ const styles = StyleSheet.create({
     height: 54,
     width: 207,
     borderRadius: 100,
-    backgroundColor: '#61301A',
   },
   text: {
     color: 'white',
