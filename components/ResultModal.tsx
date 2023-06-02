@@ -4,6 +4,7 @@ import { BogButton } from './BogButton';
 export function ResultModal({visible, result}: {
   visible: boolean,
   result: any,
+  children: any
   
 }){
   const [showModal, setShowModal] = useState<boolean>(visible)
