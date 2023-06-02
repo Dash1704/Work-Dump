@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
-import { StyleSheet, Text, View, Modal, Dimensions } from 'react-native';
-
-export function ResultModal({visible, children}: {
+import { StyleSheet, Text, View, Modal, TouchableOpacity } from 'react-native';
+import { BogButton } from './BogButton';
+export function ResultModal({visible, result}: {
   visible: boolean,
-  children: any,
+  result: any,
   
 }){
   const [showModal, setShowModal] = useState<boolean>(visible)
@@ -22,18 +22,41 @@ export function ResultModal({visible, children}: {
   }
 
   return (
-  
-      <Modal
-        transparent
-        visible={showModal}
-        animationType='slide'
-      >
-        <View style={styles.modalUpBackGround}>
-          <View style={styles.modalContainer}>
-            {children}
+    <Modal
+      transparent
+      visible={showModal}
+      animationType='slide'
+    >
+      <View style={styles.modalUpBackGround}>
+        <View style={styles.modalContainer}>
+          <View>
+            <View style={styles.modalHeader}>
+              <Text style={styles.headerText}>Your Earnings</Text>
+              <TouchableOpacity
+                onPress={() => {
+                  setShowModal(false)
+                }}>
+                <Text style={styles.headerText}>X</Text>
+              </TouchableOpacity>
+            </View>
+          </View>
+
+          <View style={styles.innerModal}>
+            <Text style={styles.earnings}>{result}</Text>
+            <Text style={styles.modalResult}>per poo</Text>
+          </View>
+      
+          <View style={{alignItems: 'center'}}>
+            <BogButton 
+              style={{alignItems: 'center'}}
+              title='Reset Calculation' 
+              onPress={() => {
+                setShowModal(false)
+            }}/>
           </View>
         </View>
-      </Modal>
+      </View>
+    </Modal>
 
   )
 } 
@@ -67,7 +90,45 @@ const styles = StyleSheet.create({
     // alignItems: 'center'
   },
   modalInnerBox: {
-  }
+    backgroundColor: 'black'
+  },
+  innerModal: {
+    width: 354,
+    height: 321,
+    // backgroundColor: 'rgba(0,0,0,0.5)',
+    borderWidth: 1,
+    // borderColor: 'grey',
+    elevation: 50,
+    shadowRadius: 80,
+    borderRadius: 20,
+    marginTop: 37,
+    padding: 30,
+    alignContent: 'center',
+    alignItems: 'center',
+    justifyContent: 'center',  
+  },
+  modalResult: {
+    marginVertical: 30, 
+    fontSize: 20,
+    textAlign: 'center'
+  },
+  headerText: {
+    fontSize: 26,
+    fontWeight: "700",
+    // fontFamily: "Inter"
+  },
+  earnings: {
+    fontWeight: "700",
+    fontSize: 60,
+    textAlign: 'center'
+  },
+  modalHeader: {
+    alignItems: 'flex-start',
+    marginTop: 38,
+    flexDirection: 'row', 
+    justifyContent: 'space-between',
+    paddingHorizontal: 25  
+  },
 })
 
 //

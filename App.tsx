@@ -21,12 +21,6 @@ function App() {
   const [visible, setVisible] = useState<boolean>(false)
   const customStyle = visible ? styles.modalUpBackGround : styles.modalDownBackGround
 
-  function Reset(): any {
-    setSalary('')
-    setWeekHours('')
-    setTime('')
-  }
-
   return (
     <SafeAreaView style={customStyle}>
     {/* <View style={styles.container}> */}
@@ -55,35 +49,8 @@ function App() {
 
       <ResultModal
         visible={visible}
+        result={result}
       >
-        <View>
-          <View style={styles.modalHeader}>
-            <Text style={styles.headerText}>Your Earnings</Text>
-            <TouchableOpacity
-            onPress={() => {
-              setVisible(false)
-            }}>
-            <Text style={styles.headerText}>X</Text>
-            </TouchableOpacity>
-            
-          </View>
-        </View>
-
-        <View style={styles.innerModal}>
-          <Text style={styles.earnings}>{result}</Text>
-          <Text style={styles.modalResult}>per poo</Text>
-        </View>
-        
-        <View style={{alignItems: 'center'}}>
-          <BogButton 
-            style={{alignItems: 'center'}}
-            title='Reset Calculation' 
-            onPress={() => {
-              setVisible(false)
-              Reset()
-          }}
-        /></View>
-        
       </ResultModal>
       
     </SafeAreaView>
@@ -119,51 +86,4 @@ const styles = StyleSheet.create({
   button: {
     marginTop: 10
   },
-  modalHeader: {
-    alignItems: 'flex-start',
-    marginTop: 38,
-    flexDirection: 'row', 
-    justifyContent: 'space-between',
-    paddingHorizontal: 25  
-  },
-  headerText: {
-    fontSize: 26,
-    fontWeight: "700",
-    // fontFamily: "Inter"
-  },
-  innerModal: {
-    width: 354,
-    height: 321,
-    // borderColor: 'black',
-    // backgroundColor: 'rgba(0,0,0,0.5)',
-    // borderWidth: 1,
-    // borderColor: 'grey',
-    elevation: 50,
-    // shadowRadius: 80,
-    borderRadius: 20,
-    marginTop: 37,
-    padding: 30,
-    alignContent: 'center',
-    alignItems: 'center',
-    justifyContent: 'center',
-    
-  },
-  modalResult: {
-    marginVertical: 30, 
-    fontSize: 20,
-    textAlign: 'center'
-  },
-  earnings: {
-    fontWeight: "700",
-    fontSize: 60,
-    color: '#61301A',
-    textAlign: 'center'
-  }
 });
-
-//TODO
-//Refactor
-//Import Inter font
-//modal
-//linear gradients
-
