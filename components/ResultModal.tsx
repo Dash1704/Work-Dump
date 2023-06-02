@@ -1,11 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import { StyleSheet, Text, View, Modal, TouchableOpacity } from 'react-native';
 import { BogButton } from './BogButton';
+import { LinearGradient } from 'expo-linear-gradient'
+import MaskedView from '@react-native-masked-view/masked-view';
+
 export function ResultModal({visible, result}: {
   visible: boolean,
   result: any,
-  children: any
-  
+  children: any 
 }){
   const [showModal, setShowModal] = useState<boolean>(visible)
 
@@ -42,9 +44,18 @@ export function ResultModal({visible, result}: {
             </View>
           </View>
 
-          <View style={styles.innerModal}>
-            <Text style={styles.earnings}>{result}</Text>
+          <View style={styles.innerBox}>
+
+            <MaskedView maskElement={<Text style={styles.earningsMasked}>{result}</Text>}>
+          <LinearGradient
+            start={{x: 0, y: 0}}
+            end={{x: 1, y: 1}}
+            colors={['#B78453', '#61301A']}>
+            <Text style={styles.earningsText}>{result}</Text>
+            </LinearGradient>
+            </MaskedView>
             <Text style={styles.modalResult}>per poo</Text>
+
           </View>
       
           <View style={{alignItems: 'center'}}>
@@ -77,51 +88,50 @@ const styles = StyleSheet.create({
     justifyContent: 'flex-end',
 
   },
-
   modalContainer: {
     width: '100%',
     backgroundColor: 'white',
     height: '80%',
     borderRadius: 20,
-    // paddingHorizontal: 20,
-    // paddingVertical: 30,
-    // elevation: 20,
-    // justifyContent: 'flex-end',
-    // flexDirection: 'column-reverse',
-    // alignItems: 'center'
   },
-  modalInnerBox: {
-    backgroundColor: 'black'
-  },
-  innerModal: {
+  innerBox: {
     width: 354,
     height: 321,
-    // backgroundColor: 'rgba(0,0,0,0.5)',
     borderWidth: 1,
-    // borderColor: 'grey',
     elevation: 50,
-    shadowRadius: 80,
     borderRadius: 20,
     marginTop: 37,
+    marginStart: 17.5,
     padding: 30,
-    alignContent: 'center',
-    alignItems: 'center',
     justifyContent: 'center',  
+    shadowOffset: {width: 20, height: 40},  
+    shadowColor: 'rgba(0,0,0,0.5)',  
+    shadowOpacity: 4,  
+    shadowRadius: 100,  
+  },
+  earningsMasked: {
+    fontWeight: "700",
+    fontSize: 60,
+    textAlign: 'center',
+    backgroundColor: 'transparent',
+  },
+  earningsText: {
+    fontWeight: "700",
+    fontSize: 60,
+    textAlign: 'center',
+    opacity: 0,
   },
   modalResult: {
     marginVertical: 30, 
-    fontSize: 20,
-    textAlign: 'center'
+    fontSize: 16,
+    textAlign: 'center',
+    fontWeight: "700",
+    lineHeight: 22,
   },
   headerText: {
     fontSize: 26,
     fontWeight: "700",
     // fontFamily: "Inter"
-  },
-  earnings: {
-    fontWeight: "700",
-    fontSize: 60,
-    textAlign: 'center'
   },
   modalHeader: {
     alignItems: 'flex-start',
@@ -131,5 +141,3 @@ const styles = StyleSheet.create({
     paddingHorizontal: 25  
   },
 })
-
-//
