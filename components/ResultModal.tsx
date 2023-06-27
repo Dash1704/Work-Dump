@@ -1,35 +1,34 @@
 import React, { useState, useEffect } from 'react';
 import { StyleSheet, Text, View, Modal, TouchableOpacity } from 'react-native';
 import { BogButton } from './BogButton';
-import { LinearGradient } from 'expo-linear-gradient'
+import { LinearGradient } from 'expo-linear-gradient';
 import MaskedView from '@react-native-masked-view/masked-view';
 
-export function ResultModal({visible, result, children}: {
-  visible: boolean,
-  result: any,
-  children: any 
-}){
-  const [showModal, setShowModal] = useState<boolean>(visible)
+export function ResultModal({
+  visible,
+  result,
+  children,
+}: {
+  visible: boolean;
+  result: any;
+  children: any;
+}) {
+  const [showModal, setShowModal] = useState<boolean>(visible);
 
   useEffect(() => {
-    toggleModal()
-  }, [visible])
-  
+    toggleModal();
+  }, [visible]);
+
   const toggleModal = () => {
-    if(visible){
-      setShowModal(true)
+    if (visible) {
+      setShowModal(true);
+    } else {
+      setShowModal(false);
     }
-    else{
-      setShowModal(false)
-    }
-  }
+  };
 
   return (
-    <Modal
-      transparent
-      visible={showModal}
-      animationType='slide'
-    >
+    <Modal transparent visible={showModal} animationType="slide">
       <View style={styles.modalUpBackGround}>
         <View style={styles.modalContainer}>
           <View>
@@ -37,36 +36,35 @@ export function ResultModal({visible, result, children}: {
               <Text style={styles.headerText}>Your Earnings</Text>
               <TouchableOpacity
                 onPress={() => {
-                  setShowModal(false)
-                }}>
+                  setShowModal(false);
+                }}
+              >
                 <Text style={styles.headerText}>X</Text>
               </TouchableOpacity>
             </View>
           </View>
 
           <View style={styles.innerBox}>
-
-            <MaskedView maskElement={<Text style={styles.earningsMasked}>{result}</Text>}>
-          <LinearGradient
-            start={{x: 0, y: 0}}
-            end={{x: 1, y: 1}}
-            colors={['#B78453', '#61301A']}>
-            <Text style={styles.earningsText}>{result}</Text>
-            </LinearGradient>
+            <MaskedView
+              maskElement={<Text style={styles.earningsMasked}>{result}</Text>}
+            >
+              <LinearGradient
+                start={{ x: 0, y: 0 }}
+                end={{ x: 1, y: 1 }}
+                colors={['#B78453', '#61301A']}
+              >
+                <Text style={styles.earningsText}>{result}</Text>
+              </LinearGradient>
             </MaskedView>
             <Text style={styles.modalResult}>per poo</Text>
+          </View>
 
-          </View>
-      
-          <View style={{alignItems: 'center'}}>
-           {children}
-          </View>
+          <View style={{ alignItems: 'center' }}>{children}</View>
         </View>
       </View>
     </Modal>
-
-  )
-} 
+  );
+}
 
 const styles = StyleSheet.create({
   modalUpBackGround: {
@@ -74,14 +72,12 @@ const styles = StyleSheet.create({
     // backgroundColor: 'rgba(0,0,0,0.5)',
     justifyContent: 'flex-end',
     // alignItems: 'center'
-
   },
   modalDownBackGround: {
     flex: 1,
     backgroundColor: 'white',
     // backgroundColor: 'black',
     justifyContent: 'flex-end',
-
   },
   modalContainer: {
     width: '100%',
@@ -98,41 +94,41 @@ const styles = StyleSheet.create({
     marginTop: 37,
     marginStart: 17.5,
     padding: 30,
-    justifyContent: 'center',  
-    shadowOffset: {width: 20, height: 40},  
-    shadowColor: 'rgba(0,0,0,0.5)',  
-    shadowOpacity: 4,  
-    shadowRadius: 100,  
+    justifyContent: 'center',
+    shadowOffset: { width: 20, height: 40 },
+    shadowColor: 'rgba(0,0,0,0.5)',
+    shadowOpacity: 4,
+    shadowRadius: 100,
   },
   earningsMasked: {
-    fontWeight: "700",
+    fontWeight: '700',
     fontSize: 60,
     textAlign: 'center',
     backgroundColor: 'transparent',
   },
   earningsText: {
-    fontWeight: "700",
+    fontWeight: '700',
     fontSize: 60,
     textAlign: 'center',
     opacity: 0,
   },
   modalResult: {
-    marginVertical: 30, 
+    marginVertical: 30,
     fontSize: 16,
     textAlign: 'center',
-    fontWeight: "700",
+    fontWeight: '700',
     lineHeight: 22,
   },
   headerText: {
     fontSize: 26,
-    fontWeight: "700",
+    fontWeight: '700',
     // fontFamily: "Inter"
   },
   modalHeader: {
     alignItems: 'flex-start',
     marginTop: 38,
-    flexDirection: 'row', 
+    flexDirection: 'row',
     justifyContent: 'space-between',
-    paddingHorizontal: 25  
+    paddingHorizontal: 25,
   },
-})
+});

@@ -1,17 +1,17 @@
 import React, { useState } from 'react';
 import { StyleSheet, View, Image } from 'react-native';
 
-export function Logo(){
+export function Logo() {
   return (
     <View style={styles.circle}>
-      <View style={{alignItems: 'center', marginTop: 9}}>
-      <Image
-        source={require('../assets/poo-emoji.png')}
-        style={styles.poop}
-      />
+      <View style={{ alignItems: 'center', marginTop: 9 }}>
+        <Image
+          source={require('../assets/poo-emoji.png')}
+          style={styles.poop}
+        />
       </View>
     </View>
-  )
+  );
 }
 
 const styles = StyleSheet.create({
@@ -23,7 +23,7 @@ const styles = StyleSheet.create({
     marginTop: 30,
   },
   poop: {
-    width: 300, 
+    width: 300,
     height: 300,
-  }
-})
+  },
+});
