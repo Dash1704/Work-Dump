@@ -4,7 +4,7 @@ import { BogButton } from './BogButton';
 import { LinearGradient } from 'expo-linear-gradient'
 import MaskedView from '@react-native-masked-view/masked-view';
 
-export function ResultModal({visible, result}: {
+export function ResultModal({visible, result, children}: {
   visible: boolean,
   result: any,
   children: any 
@@ -59,12 +59,7 @@ export function ResultModal({visible, result}: {
           </View>
       
           <View style={{alignItems: 'center'}}>
-            <BogButton 
-              style={{alignItems: 'center'}}
-              title='Reset Calculation' 
-              onPress={() => {
-                setShowModal(false)
-            }}/>
+           {children}
           </View>
         </View>
       </View>

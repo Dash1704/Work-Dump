@@ -18,8 +18,8 @@ function App() {
   console.log(time)
   console.log(result)
   
-  const [visible, setVisible] = useState<boolean>(false)
-  const customStyle = visible ? styles.modalUpBackGround : styles.modalDownBackGround
+  const [showModal, setShowModal] = useState<boolean>(false)
+  const customStyle = showModal ? styles.modalUpBackGround : styles.modalDownBackGround
 
   return (
     <SafeAreaView style={customStyle}>
@@ -43,14 +43,19 @@ function App() {
       <BogButton title='Calculate Earnings' onPress={
         () => {
           setResult(Calculator(salary, weekHours, time))
-          setVisible(true)
+          setShowModal(true)
         }}
       />
 
-      <ResultModal
-        visible={visible}
-        result={result}
-      >
+<ResultModal visible={showModal} result={result}>
+        {/* Render the Reset Calculation button within ResultModal */}
+        <BogButton
+          style={{ alignItems: 'center' }}
+          title="Reset Calculation"
+          onPress={() => {
+            setShowModal(false); // Hide modal
+          }}
+        />
       </ResultModal>
       
     </SafeAreaView>
