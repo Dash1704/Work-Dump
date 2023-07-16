@@ -22,10 +22,13 @@ function App() {
   const [time, setTime] = useState<number | string>('');
   const [result, setResult] = useState<string | undefined>('');
 
-  console.log(salary);
-  console.log(weekHours);
-  console.log(time);
-  console.log(result);
+  const resetFields = () => {
+    setSalary('');
+    setWeekHours('');
+    setTime('');
+    setResult('');
+    setShowModal(false);
+  }
 
   const [showModal, setShowModal] = useState<boolean>(false);
   const customStyle = showModal
@@ -44,18 +47,18 @@ function App() {
           boxTitle="Yearly Salary (£)"
           onChangeText={setSalary}
           placeholder="E.g £30,000"
+          value={salary}
         >
-          {salary}
         </InputBox>
       </View>
 
       <View>
         <InputBox
-          boxTitle='Hours per week'
+          boxTitle="Hours per week"
           onChangeText={setWeekHours}
           placeholder="E.g 35"
+          value={weekHours}
         >
-          {weekHours}
         </InputBox>
       </View>
 
@@ -64,8 +67,8 @@ function App() {
           boxTitle="Time on Bog (MM.SS)"
           onChangeText={setTime}
           placeholder="E.g 5.03"
+          value={time}
         >
-          {time}
         </InputBox>
       </View>
 
@@ -81,9 +84,7 @@ function App() {
         <BogButton
           style={{ alignItems: 'center' }}
           title="Reset Calculation"
-          onPress={() => {
-            setShowModal(false);
-          }}
+          onPress={resetFields}
         />
       </ResultModal>
     </SafeAreaView>

@@ -14,6 +14,7 @@ export function InputBox(props: any) {
         placeholder={props.placeholder}
         onFocus={() => setFocus(true)}
         onBlur={() => setFocus(false)}
+        value={props.value}
       ></TextInput>
     </View>
   );

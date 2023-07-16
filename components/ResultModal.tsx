@@ -33,14 +33,7 @@ export function ResultModal({
         <View style={styles.modalContainer}>
           <View>
             <View style={styles.modalHeader}>
-              <Text style={styles.headerText}>Your Earnings</Text>
-              <TouchableOpacity
-                onPress={() => {
-                  setShowModal(false);
-                }}
-              >
-                <Text style={styles.headerText}>X</Text>
-              </TouchableOpacity>
+              <Text style={styles.headerText}>Your Earnings</Text>             
             </View>
           </View>
 
