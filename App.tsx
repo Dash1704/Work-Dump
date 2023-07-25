@@ -37,8 +37,6 @@ function App() {
 
   return (
     <SafeAreaView style={customStyle}>
-      {/* <View style={styles.container}> */}
-
       <Logo />
       <Title />
 
@@ -46,7 +44,7 @@ function App() {
         <InputBox
           boxTitle="Yearly Salary (£)"
           onChangeText={setSalary}
-          placeholder="E.g £30,000"
+          placeholder="E.g 30000"
           value={salary}
         >
         </InputBox>

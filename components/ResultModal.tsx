@@ -49,7 +49,7 @@ export function ResultModal({
                 <Text style={styles.earningsText}>{result}</Text>
               </LinearGradient>
             </MaskedView>
-            <Text style={styles.modalResult}>per poo</Text>
+            <Text style={styles.modalResult}>per poop</Text>
           </View>
 
           <View style={{ alignItems: 'center' }}>{children}</View>
