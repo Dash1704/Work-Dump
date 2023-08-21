@@ -31,7 +31,6 @@ const styles = StyleSheet.create({
     letterSpacing: -0.05,
     color: '#000000',
     lineHeight: 21,
-    // fontFamily: 'Inter'
   },
   boxContainer: {
     marginTop: 4,

@@ -1,13 +1,8 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import {
   StyleSheet,
-  Text,
   SafeAreaView,
   View,
-  TextInput,
-  Button,
-  Modal,
-  TouchableOpacity,
 } from 'react-native';
 import { InputBox } from './components/InputBox';
 import { Title } from './components/Title';
