@@ -16,6 +16,7 @@ export function InputBox(props: any) {
         onBlur={() => setFocus(false)}
         value={props.value}
       ></TextInput>
+       {props.errorMessage && <Text>{props.errorMessage}</Text>}
     </View>
   );
 }

@@ -17,12 +17,28 @@ function App() {
   const [time, setTime] = useState<number | string>('');
   const [result, setResult] = useState<string | undefined>('');
 
+   const [salaryError, setSalaryError] = useState<string | null>(null);
+
   const resetFields = () => {
     setSalary('');
     setWeekHours('');
     setTime('');
     setResult('');
     setShowModal(false);
+    setSalaryError(null)
+  }
+
+    const validateInputs = () => {
+    let isValid = true;
+
+    if (!/^\d+$/.test(salary.toString())) {
+      setSalaryError('Please enter a valid salary');
+      isValid = false;
+    } else {
+      setSalaryError(null);
+    }
+
+    return isValid;
   }
 
   const [showModal, setShowModal] = useState<boolean>(false);
@@ -38,9 +54,13 @@ function App() {
       <View>
         <InputBox
           boxTitle="Yearly Salary (£)"
-          onChangeText={setSalary}
+          onChangeText={(value: string | number) => {
+            setSalary(value);
+            setSalaryError(null); 
+          }}
           placeholder="E.g 30000"
           value={salary}
+          errorMessage={salaryError}
         >
         </InputBox>
       </View>
@@ -68,8 +88,10 @@ function App() {
       <BogButton
         title="Calculate Earnings"
         onPress={() => {
+          if (validateInputs()) {
           setResult(Calculator(salary, weekHours, time));
           setShowModal(true);
+          }
         }}
       />
 
