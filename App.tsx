@@ -18,6 +18,7 @@ function App() {
   const [result, setResult] = useState<string | undefined>('');
 
    const [salaryError, setSalaryError] = useState<string | null>(null);
+   const [weekHoursError, setWeekHoursError] = useState<string | null>(null);
 
   const resetFields = () => {
     setSalary('');
@@ -26,6 +27,7 @@ function App() {
     setResult('');
     setShowModal(false);
     setSalaryError(null)
+    setWeekHoursError(null)
   }
 
     const validateInputs = () => {
@@ -37,6 +39,13 @@ function App() {
     } else {
       setSalaryError(null);
     }
+    if (!/^\d+$/.test(weekHours.toString())) {
+      setWeekHoursError('Please enter a valid number of week hours');
+      isValid = false
+    } else{
+      setSalaryError(null)
+    }
+    
 
     return isValid;
   }
@@ -68,9 +77,13 @@ function App() {
       <View>
         <InputBox
           boxTitle="Hours per week"
-          onChangeText={setWeekHours}
+          onChangeText={(value: string | number) => {
+            setWeekHours(value);
+            setWeekHoursError(null); 
+          }}
           placeholder="E.g 35"
           value={weekHours}
+          errorMessage={weekHoursError}
         >
         </InputBox>
       </View>
