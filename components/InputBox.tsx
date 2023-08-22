@@ -3,7 +3,12 @@ import { StyleSheet, Text, View, TextInput, Button } from 'react-native';
 
 export function InputBox(props: any) {
   const [focus, setFocus] = useState<boolean>(false);
-  const customStyle = focus ? styles.focusBoxContainer : styles.boxContainer;
+
+  const customStyle = focus && !props.errorMessage
+  ? styles.focusBoxContainer
+  : props.errorMessage
+    ? { ...styles.boxContainer, borderColor: '#E40000' }
+    : styles.boxContainer;
 
   return (
     <View style={styles.container}>
