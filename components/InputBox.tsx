@@ -16,7 +16,7 @@ export function InputBox(props: any) {
         onBlur={() => setFocus(false)}
         value={props.value}
       ></TextInput>
-       {props.errorMessage && <Text>{props.errorMessage}</Text>}
+       {props.errorMessage && <Text style={styles.errorText}>{props.errorMessage}</Text>}
     </View>
   );
 }
@@ -49,4 +49,10 @@ const styles = StyleSheet.create({
     borderRadius: 5,
     borderColor: '#714025',
   },
+  errorText: {
+    color: '#E40000',
+    fontSize: 10,
+    textAlign: 'right',
+    marginTop: 1
+  }
 });

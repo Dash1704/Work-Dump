@@ -42,7 +42,7 @@ function App() {
       setSalaryError(null);
     }
     if (!/^\d+$/.test(weekHours.toString())) {
-      setWeekHoursError('Please enter a valid number of week hours');
+      setWeekHoursError('Please enter valid week hours');
       isValid = false
     } else{
       setSalaryError(null)
