@@ -19,6 +19,7 @@ function App() {
 
    const [salaryError, setSalaryError] = useState<string | null>(null);
    const [weekHoursError, setWeekHoursError] = useState<string | null>(null);
+   const [timerError, setTimeError] = useState<string | null>(null);
 
   const resetFields = () => {
     setSalary('');
@@ -28,6 +29,7 @@ function App() {
     setShowModal(false);
     setSalaryError(null)
     setWeekHoursError(null)
+    setTimeError(null);
   }
 
     const validateInputs = () => {
@@ -44,6 +46,12 @@ function App() {
       isValid = false
     } else{
       setSalaryError(null)
+    }
+    if (!/^\d+$/.test(time.toString())) {
+      setTimeError('Please enter a valid time');
+      isValid = false
+    } else{
+      setTimeError(null)
     }
     
 
@@ -91,9 +99,13 @@ function App() {
       <View>
         <InputBox
           boxTitle="Time on Bog (MM.SS)"
-          onChangeText={setTime}
+          onChangeText={(value: string | number) => {
+            setTime(value);
+            setTimeError(null); 
+          }}
           placeholder="E.g 5.03"
           value={time}
+          errorMessage={timerError}
         >
         </InputBox>
       </View>
