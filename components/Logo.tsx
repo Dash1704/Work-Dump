@@ -1,4 +1,3 @@
-import React, { useState } from 'react';
 import { StyleSheet, View, Image } from 'react-native';
 
 export function Logo() {
