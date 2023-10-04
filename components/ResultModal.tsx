@@ -62,14 +62,11 @@ export function ResultModal({
 const styles = StyleSheet.create({
   modalUpBackGround: {
     flex: 1,
-    // backgroundColor: 'rgba(0,0,0,0.5)',
     justifyContent: 'flex-end',
-    // alignItems: 'center'
   },
   modalDownBackGround: {
     flex: 1,
     backgroundColor: 'white',
-    // backgroundColor: 'black',
     justifyContent: 'flex-end',
   },
   modalContainer: {
@@ -115,7 +112,6 @@ const styles = StyleSheet.create({
   headerText: {
     fontSize: 26,
     fontWeight: '700',
-    // fontFamily: "Inter"
   },
   modalHeader: {
     alignItems: 'flex-start',
